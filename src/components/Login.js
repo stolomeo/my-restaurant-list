@@ -1,6 +1,7 @@
 import React from "react";
 import { initializeApp } from "firebase/app";
 import { Button, Form, Input } from "antd";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDfBGbR5P2Foh82CQrpoJm_gHXOrPxaHes",
@@ -13,12 +14,24 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 export default function Login() {
+  const handleLogin = ({ email, password }) => {
+    const app = initializeApp(firebaseConfig); //connect fo firebase
+    const auth = getAuth(app); //connect to auth
+    //login with firebase auth
+    signInWithEmailAndPassword(auth, email, password)
+      .then((res) => console.log(res.user))
+      .catch(console.error);
+  };
+
   return (
     <section style={{ padding: "2em" }}>
-      <Form labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
+      <Form
+        onFinish={handleLogin}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+      >
         <Form.Item
           label="Email"
           name="email"
