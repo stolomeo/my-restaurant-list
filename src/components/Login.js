@@ -1,7 +1,12 @@
 import React from "react";
 import { initializeApp } from "firebase/app";
 import { Button, Form, Input } from "antd";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDfBGbR5P2Foh82CQrpoJm_gHXOrPxaHes",
@@ -21,6 +26,15 @@ export default function Login() {
     const auth = getAuth(app); //connect to auth
     //login with firebase auth
     signInWithEmailAndPassword(auth, email, password)
+      .then((res) => console.log(res.user))
+      .catch(console.error);
+  };
+
+  const handleGoogleLogin = () => {
+    const app = initializeApp(firebaseConfig); //connect fo firebase
+    const auth = getAuth(app); //connect to auth
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
       .then((res) => console.log(res.user))
       .catch(console.error);
   };
@@ -50,6 +64,9 @@ export default function Login() {
           <Button type="primary" htmlType="submit">
             Login
           </Button>
+        </Form.Item>
+        <Form.Item wrapperCol={{ span: 16, offset: 8 }}>
+          <Button onClick={handleGoogleLogin}>Google Login</Button>
         </Form.Item>
       </Form>
     </section>
