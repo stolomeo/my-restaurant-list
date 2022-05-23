@@ -12,7 +12,7 @@ function App() {
   return (
     <Layout className="layout">
       <Header>
-        <Menubar />
+        <Menubar displayName={user.displayName} />
       </Header>
       <Content>
         <Routes>
