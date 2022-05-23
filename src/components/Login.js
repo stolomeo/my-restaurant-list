@@ -18,12 +18,16 @@ const firebaseConfig = {
   measurementId: "G-605MHRSNP6",
 };
 
+const connectAuth = () => {
+  const app = initializeApp(firebaseConfig); //connect fo firebase
+  return getAuth(app);
+};
+
 // Initialize Firebase
 
 export default function Login() {
   const handleLogin = ({ email, password }) => {
-    const app = initializeApp(firebaseConfig); //connect fo firebase
-    const auth = getAuth(app); //connect to auth
+    const auth = connectAuth(); //connect to auth
     //login with firebase auth
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => console.log(res.user))
@@ -31,8 +35,7 @@ export default function Login() {
   };
 
   const handleGoogleLogin = () => {
-    const app = initializeApp(firebaseConfig); //connect fo firebase
-    const auth = getAuth(app); //connect to auth
+    const auth = connectAuth(); //connect to auth
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((res) => console.log(res.user))

@@ -27,11 +27,6 @@ export default function Menubar() {
           key="random"
           icon={<QuestionCircleOutlined style={styles} />}
         ></Menu.Item>
-        <Menu.Item
-          key="user"
-          icon={<UserOutlined style={styles} />}
-          onClick={() => navigate.push("/login")}
-        ></Menu.Item>
       </Menu>
     </div>
   );

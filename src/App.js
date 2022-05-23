@@ -4,8 +4,10 @@ import Menubar from "./components/Menubar";
 import { Route, Routes } from "react-router-dom";
 import RestaurantPage from "./components/RestaurantPage";
 import Login from "./components/Login";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState();
   const { Header, Content } = Layout;
   return (
     <Layout className="layout">
@@ -19,8 +21,10 @@ function App() {
             element={<RestaurantPage />}
           />
           <Route path="/Random" element={<h1>Random</h1>} />
-          <Route path="/add" element={<h1>Add restaurant</h1>} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/add"
+            element={!user ? <Login /> : <h1>Add restaurant</h1>}
+          />
           <Route path="/" element={<RestaurantList />} />
         </Routes>
       </Content>
