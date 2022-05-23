@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,9 +8,11 @@ import {
   QuestionCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { UserContext } from "../App";
 
 export default function Menubar({ displayName }) {
   let navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
   return (
     <div>
       <Menu theme="dark" mode="horizontal">
@@ -25,10 +28,15 @@ export default function Menubar({ displayName }) {
         ></Menu.Item>
         <Menu.Item
           key="random"
-          icon={<QuestionCircleOutlined style={styles} />}
-        ></Menu.Item>
-        <Menu.Item key="displayname" icon={<UserOutlined style={styles} />}>
-          {displayName}
+          icon={
+            !user ? (
+              <QuestionCircleOutlined style={styles} />
+            ) : (
+              <UserOutlined style={styles} />
+            )
+          }
+        >
+          {!user ? "Guest" : user.displayName}
         </Menu.Item>
       </Menu>
     </div>
