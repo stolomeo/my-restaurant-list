@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu } from "antd";
 import {
+  HomeOutlined,
   PlusCircleOutlined,
   QuestionCircleOutlined,
   UserOutlined,
@@ -10,6 +11,10 @@ export default function Menubar() {
   return (
     <div>
       <Menu theme="dark" mode="horizontal">
+        <Menu.Item
+          key="home"
+          icon={<HomeOutlined style={styles} />}
+        ></Menu.Item>
         <Menu.Item
           key="add"
           icon={<PlusCircleOutlined style={styles} />}
