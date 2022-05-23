@@ -2,6 +2,7 @@ import RestaurantList from "./components/RestaurantList";
 import { Layout } from "antd";
 import Menubar from "./components/Menubar";
 import { Route, Routes } from "react-router-dom";
+import RestaurantPage from "./components/RestaurantPage";
 
 function App() {
   const { Header, Content } = Layout;
@@ -14,7 +15,7 @@ function App() {
         <Routes>
           <Route
             path="/restaurants/:restaurantId"
-            element={<h1>A restaurant</h1>}
+            element={<RestaurantPage />}
           />
           <Route path="/Random" element={<h1>Random</h1>} />
           <Route path="/add" element={<h1>Add restaurant</h1>} />
