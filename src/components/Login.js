@@ -25,12 +25,12 @@ const connectAuth = () => {
 
 // Initialize Firebase
 
-export default function Login() {
+export default function Login({ setUser }) {
   const handleLogin = ({ email, password }) => {
     const auth = connectAuth(); //connect to auth
     //login with firebase auth
     signInWithEmailAndPassword(auth, email, password)
-      .then((res) => console.log(res.user))
+      .then((res) => setUser(res.user))
       .catch(console.error);
   };
 
@@ -38,7 +38,7 @@ export default function Login() {
     const auth = connectAuth(); //connect to auth
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((res) => console.log(res.user))
+      .then((res) => setUser(res.user))
       .catch(console.error);
   };
 

@@ -16,12 +16,12 @@ export default function Menubar() {
         <Menu.Item
           key="home"
           icon={<HomeOutlined style={styles} />}
-          onClick={() => navigate.push("/")}
+          onClick={() => navigate("/")}
         ></Menu.Item>
         <Menu.Item
           key="add"
           icon={<PlusCircleOutlined style={styles} />}
-          onClick={() => navigate.push("/add")}
+          onClick={() => navigate("/add")}
         ></Menu.Item>
         <Menu.Item
           key="random"

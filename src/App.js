@@ -23,7 +23,9 @@ function App() {
           <Route path="/Random" element={<h1>Random</h1>} />
           <Route
             path="/add"
-            element={!user ? <Login /> : <h1>Add restaurant</h1>}
+            element={
+              !user ? <Login setUser={setUser} /> : <h1>Add restaurant</h1>
+            }
           />
           <Route path="/" element={<RestaurantList />} />
         </Routes>
