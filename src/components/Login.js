@@ -19,10 +19,18 @@ export default function Login() {
   return (
     <section style={{ padding: "2em" }}>
       <Form labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
-        <Form.Item label="Email" name="email">
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: "Please enter a valid email" }]}
+        >
           <Input />
         </Form.Item>
-        <Form.Item label="Password" name="password">
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please enter your password" }]}
+        >
           <Input.Password />
         </Form.Item>
         <Form.Item wrapperCol={{ span: 16, offset: 8 }}>
