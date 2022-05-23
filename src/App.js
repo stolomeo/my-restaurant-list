@@ -12,6 +12,10 @@ function App() {
       </Header>
       <Content>
         <Routes>
+          <Route
+            path="/restaurants/:restaurantId"
+            element={<h1>A restaurant</h1>}
+          />
           <Route path="/Random" element={<h1>Random</h1>} />
           <Route path="/add" element={<h1>Add restaurant</h1>} />
           <Route path="/login" element={<h1>Login</h1>} />
