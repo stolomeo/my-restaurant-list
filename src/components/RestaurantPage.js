@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 
 export default function RestaurantPage() {
@@ -8,13 +8,18 @@ export default function RestaurantPage() {
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
-        `"https://my-first-firestore-st.web.app/restaurants/${restaurantId}"`
+        `https://my-first-firestore-st.web.app/restaurants/${restaurantId}`
       );
       const data = await response.json();
-      setRestaurant(data);
+      await setRestaurant(data);
     };
     getData();
   }, [restaurantId]);
 
-  return <RestaurantCard restaurant={restaurant} />;
+  return (
+    <>
+      <Link to="/">&lt; Back</Link>
+      <RestaurantCard restaurant={restaurant} />
+    </>
+  );
 }
