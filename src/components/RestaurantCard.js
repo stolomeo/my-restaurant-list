@@ -7,14 +7,14 @@ export default function RestaurantCard({ restaurant, key }) {
   return (
     <Col style={{ width: "300px", margin: "1rem" }}>
       <Card
-        cover={<img src={restaurant.img} alt="hi" />}
-        title={restaurant.name}
+        cover={restaurant && <img src={restaurant?.img} alt="hi" />}
+        title={restaurant?.name}
         hoverable={true}
         key={key}
-        onClick={() => navigate(`./restaurants/${restaurant.id}`)}
+        onClick={() => navigate(`./restaurants/${restaurant?.id}`)}
         loading={!restaurant}
       >
-        <p>{restaurant.address}</p>
+        <p>{restaurant?.address}</p>
       </Card>
     </Col>
   );
