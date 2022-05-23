@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu } from "antd";
+import { useNavigate } from "react-router-dom";
 import {
   HomeOutlined,
   PlusCircleOutlined,
@@ -8,16 +9,19 @@ import {
 } from "@ant-design/icons";
 
 export default function Menubar() {
+  let navigate = useNavigate();
   return (
     <div>
       <Menu theme="dark" mode="horizontal">
         <Menu.Item
           key="home"
           icon={<HomeOutlined style={styles} />}
+          onClick={() => navigate.push("/")}
         ></Menu.Item>
         <Menu.Item
           key="add"
           icon={<PlusCircleOutlined style={styles} />}
+          onClick={() => navigate.push("/add")}
         ></Menu.Item>
         <Menu.Item
           key="random"
@@ -26,6 +30,7 @@ export default function Menubar() {
         <Menu.Item
           key="user"
           icon={<UserOutlined style={styles} />}
+          onClick={() => navigate.push("/login")}
         ></Menu.Item>
       </Menu>
     </div>
