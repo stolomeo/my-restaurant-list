@@ -8,7 +8,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
-export default function Menubar() {
+export default function Menubar({ displayName }) {
   let navigate = useNavigate();
   return (
     <div>
@@ -27,6 +27,9 @@ export default function Menubar() {
           key="random"
           icon={<QuestionCircleOutlined style={styles} />}
         ></Menu.Item>
+        <Menu.Item key="displayname" icon={<UserOutlined style={styles} />}>
+          {displayName}
+        </Menu.Item>
       </Menu>
     </div>
   );
