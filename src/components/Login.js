@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 
 export default function Login() {
   return (
-    <Form>
+    <Form labelCol={{ span: 4 }} wrapperCol={{ span: 16 }}>
       <Form.Item label="Email" name="email">
         <Input />
       </Form.Item>
